@@ -10,7 +10,7 @@ module.exports = {
     const newMethodsPay = methodsPay.map(methodpay => {
       return {
         ...methodpay,
-        image_url: `http://${process.env.PORT}/uploads/${methodpay.image}`,
+        image_url: `http://valepremier-backend.herokuapp.com/uploads/${methodpay.image}`,
       }
     })
 

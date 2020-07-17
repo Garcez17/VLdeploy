@@ -24,8 +24,8 @@ module.exports = {
     const newRaffle = Raffle.map(raffle => {
       return {
         ...raffle,
-        image_url: `http://${process.env.PORT}/uploads/${raffle.image}`,
-        imageHome_url: `http://${process.env.PORT}/uploads/${raffle.imageHome}`
+        image_url: `http://valepremier-backend.herokuapp.com/uploads/${raffle.image}`,
+        imageHome_url: `http://valepremier-backend.herokuapp.com/uploads/${raffle.imageHome}`
       }
     })
 
@@ -41,8 +41,8 @@ module.exports = {
     const newRaffle = Raffle.map(raffle => {
       return {
         ...raffle,
-        image_url: `http://${process.env.PORT}/uploads/${raffle.image}`,
-        imageHome_url: `http://${process.env.PORT}/uploads/${raffle.imageHome}`
+        image_url: `http://valepremier-backend.herokuapp.com/uploads/${raffle.image}`,
+        imageHome_url: `http://valepremier-backend.herokuapp.com/uploads/${raffle.imageHome}`
       }
     })
 
@@ -54,8 +54,8 @@ module.exports = {
     const newRaffle = Raffle.map(raffle => {
       return {
         ...raffle,
-        image_url: `http://${process.env.PORT}/uploads/${raffle.image}`,
-        imageHome_url: `http://${process.env.PORT}/uploads/${raffle.imageHome}`
+        image_url: `http://valepremier-backend.herokuapp.com/uploads/${raffle.image}`,
+        imageHome_url: `http://valepremier-backend.herokuapp.com/uploads/${raffle.imageHome}`
       }
     })
 
@@ -72,8 +72,8 @@ module.exports = {
 
     const serializedRaffle = {
       ...raffle,
-      image_url: `http://${process.env.PORT}/uploads/${raffle.image}`,
-      imageHome_url: `http://${process.env.PORT}/uploads/${raffle.imageHome}`
+      image_url: `http://valepremier-backend.herokuapp.com/uploads/${raffle.image}`,
+      imageHome_url: `http://valepremier-backend.herokuapp.com/uploads/${raffle.imageHome}`
     }
 
     return res.json({raffle: serializedRaffle, numbers});
