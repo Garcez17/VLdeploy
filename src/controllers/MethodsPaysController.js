@@ -19,8 +19,6 @@ module.exports = {
   async create(req, res) {
     const { name, type, name_user, agency, account } = req.body;
 
-    //const imageTreaty = file.filename.replace(/[ ]/g, "-");
-  
     const PaysMethod = {
       image: req.file.filename,
       name,
