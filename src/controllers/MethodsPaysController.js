@@ -10,7 +10,7 @@ module.exports = {
     const newMethodsPay = methodsPay.map(methodpay => {
       return {
         ...methodpay,
-        image_url: `http://localhost:3333/uploads/${methodpay.image}`,
+        image_url: `http://${process.env.PORT}/uploads/${methodpay.image}`,
       }
     })
 
