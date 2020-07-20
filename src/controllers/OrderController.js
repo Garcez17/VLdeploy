@@ -10,14 +10,23 @@ module.exports = {
 
     return res.json(Orders);
   },
+  async search(req, res) {
+    const { raffle_id, search } = req.params;
+    
+    const Orders = await knex('orders')
+      .select('*')
+      .where('raffle_id', raffle_id).andWhere('id', search);
+
+    return res.json(Orders);
+  },
   async show(req, res) {
     const { raffle_id, cpf } = req.params;
     
-    const Order = await knex('orders')
+    const Orders = await knex('orders')
       .select('*')
       .where('raffle_id', raffle_id).andWhere('cpf', cpf);
 
-    return res.json(Order);
+    return res.json(Orders);
   },
   async create(req, res) {
     const { raffle_id } = req.params;
