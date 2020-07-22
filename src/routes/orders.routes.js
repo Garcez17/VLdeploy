@@ -7,7 +7,8 @@ const ordersRouter = Router();
 const ensureAuthenticated = require('../middlewares/ensureAuthenticated');
 
 ordersRouter.get("/:raffle_id", ensureAuthenticated, OrderController.index);
-ordersRouter.get("/:raffle_id/:search", ensureAuthenticated, OrderController.search);
+ordersRouter.get("/:raffle_id/:search/order-id", OrderController.searchId);
+ordersRouter.get("/:raffle_id/order-name", OrderController.searchName);
 ordersRouter.get("/:raffle_id/:cpf", OrderController.show);
 
 ordersRouter.post("/buy/:raffle_id", OrderController.create);

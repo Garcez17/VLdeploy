@@ -10,12 +10,22 @@ module.exports = {
 
     return res.json(Orders);
   },
-  async search(req, res) {
+  async searchId(req, res) {
     const { raffle_id, search } = req.params;
     
     const Orders = await knex('orders')
       .select('*')
       .where('raffle_id', raffle_id).andWhere('id', search);
+
+    return res.json(Orders);
+  },
+  async searchName(req, res) {
+    const { raffle_id } = req.params;
+    const { search } = req.query;
+    
+    const Orders = await knex('orders')
+      .select('*')
+      .where('raffle_id', raffle_id).andWhere('name_user', search);
 
     return res.json(Orders);
   },

@@ -3,7 +3,11 @@ const knex = require('../database/connection');
 module.exports = {
   async index(req, res) {
     const { raffle_id } = req.params;
-    const numbers = await knex.select('*').from('numbers').where('raffle_id', raffle_id);
+    const { page = 1 } = req.query;
+    const numbers = await knex.select('*').from('numbers')
+      .limit(100)
+      .offset((page - 1) * 100)
+      .where('raffle_id', raffle_id);
   
     return res.json(numbers)
   },

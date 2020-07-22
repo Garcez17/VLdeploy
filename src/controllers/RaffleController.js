@@ -63,12 +63,27 @@ module.exports = {
   },
   async show(req, res) {
     const { id } = req.params;
+    const { page = 1 } = req.query;
 
     const raffle = await knex('raffle').where('id', id).first();
 
     if(!raffle) return res.status(400).json({ message: 'Sorteio não encontrado.' });
 
-    const numbers = await knex('numbers').where('numbers.raffle_id', id);
+    const [count] = await knex('numbers').where('numbers.raffle_id', id).count();
+
+    const [vailble] = await knex('numbers').where('numbers.raffle_id', id)
+      .where('status', 'Disponivel').count();
+
+    const [reserved] = await knex('numbers').where('numbers.raffle_id', id)
+      .where('status', 'Reservado').count();
+
+    const [paid] = await knex('numbers').where('numbers.raffle_id', id)
+    .where('status', 'Pago').count();
+
+    const numbers = await knex('numbers')
+      .limit(100)
+      .offset((page - 1) * 100)
+      .where('numbers.raffle_id', id);
 
     const serializedRaffle = {
       ...raffle,
@@ -76,7 +91,14 @@ module.exports = {
       imageHome_url: `http://valepremier-backend.herokuapp.com/uploads/${raffle.imageHome}`
     }
 
-    return res.json({raffle: serializedRaffle, numbers});
+    const statusIndex = {
+      vailble,
+      reserved,
+      paid,
+      count,
+    }
+
+    return res.json({raffle: serializedRaffle, statusIndex, numbers});
   },
   async create(req, res) {
     const { name, description, type, promotion, initial_title, value, fieldnumbers } = req.body;
