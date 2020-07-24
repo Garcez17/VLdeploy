@@ -81,8 +81,8 @@ module.exports = {
     .where('status', 'Pago').count();
 
     const numbers = await knex('numbers')
-      .limit(100)
-      .offset((page - 1) * 100)
+      .limit(500)
+      .offset((page - 1) * 500)
       .where('numbers.raffle_id', id);
 
     const serializedRaffle = {

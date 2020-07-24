@@ -157,7 +157,7 @@ module.exports = {
     if(typeof arr === 'number') {
       newArr = order[0].numbers_id;
       await trx('numbers').where('id', newArr).update({
-        status: 'disponivel',
+        status: 'Disponivel',
         name_user: '',
         telefone01: '',
         telefone02: '',
@@ -169,7 +169,7 @@ module.exports = {
         return parseInt(res);
       });
       await trx('numbers').whereIn('id', newArr).update({
-        status: 'disponivel',
+        status: 'Disponivel',
         name_user: '',
         telefone01: '',
         telefone02: '',
