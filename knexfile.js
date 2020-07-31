@@ -1,12 +1,15 @@
+require('dotenv/config');
+
 const path = require('path');
 
 module.exports = {
   client: 'pg',
   host: 'localhost',
   connection: {
-    database: 'vale_premier',
-    user: 'postgres',
-    password: 'garcez12GS'
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS
   },
   migrations: {
     directory: path.resolve(__dirname, 'src', 'database', 'migrations'),
