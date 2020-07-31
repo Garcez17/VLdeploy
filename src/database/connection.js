@@ -1,10 +1,12 @@
 const knex = require('knex');
-const path = require('path');
 
 const connection = knex({
-  client: 'sqlite3',
+  client: 'pg',
+  host: 'localhost',
   connection: {
-    filename: path.resolve(__dirname, 'database.sqlite'),
+    database: "vale_premier",
+    user: "postgres",
+    password: "garcez12GS"
   },
   useNullAsDefault: true,
 })

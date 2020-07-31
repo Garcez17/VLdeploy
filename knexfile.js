@@ -1,9 +1,12 @@
 const path = require('path');
 
 module.exports = {
-  client: 'sqlite3',
+  client: 'pg',
+  host: 'localhost',
   connection: {
-    filename: path.resolve(__dirname, 'src', 'database', 'database.sqlite'),
+    database: 'vale_premier',
+    user: 'postgres',
+    password: 'garcez12GS'
   },
   migrations: {
     directory: path.resolve(__dirname, 'src', 'database', 'migrations'),
